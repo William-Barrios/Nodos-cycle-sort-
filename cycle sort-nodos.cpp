@@ -93,69 +93,71 @@ class List
                 }
                 
                 
-                if (cont != actual){
-                    if(actual == 0){
-                        Node* temp=Circle;
-                        Node* temp2=Circle->next;
-                        Node* temp_posprev=Circle;
-                        Node* temp_pospos=NULL;
-                        if(pos->next!=NULL){
-                            temp_pospos=pos->next;
+                
+                if(actual == 0){
+                    Node* temp=Circle;
+                    Node* temp2=Circle->next;
+                    Node* temp_posprev=Circle;
+                    Node* temp_pospos=NULL;
+                    if(pos->next!=NULL){
+                        temp_pospos=pos->next;
+                    }
+                    for(;temp_posprev!=NULL;temp_posprev=temp_posprev->next){
+                        if(temp_posprev->next==pos){
+                            break;
                         }
-                        for(;temp_posprev!=NULL;temp_posprev=temp_posprev->next){
-                            if(temp_posprev->next==pos){
-                                break;
-                            }
-                        }
-                        if (temp_posprev == Circle){                  
-                            Circle->next = Circle->next->next;
-                            pos->next = Circle;
-                            Circle = pos;
-                            continue;
+                    }
+                    if (temp_posprev == Circle){                  
+                        Circle->next = Circle->next->next;
+                        pos->next = Circle;
+                        Circle = pos;
+                        continue;
 
-                        }
-                        temp_posprev->next=temp;
-                        temp->next=temp_pospos;
-                        Circle=pos;
-                        Circle->next=temp2;
-                        head = Circle;
                     }
-                    else{
-                        Node* temp=Circle;
-                        Node* temp2=Circle->next;
-                        Node* temp_posprev=Circle;
-                        Node* temp_pospos=NULL;
-                        if(pos->next!=NULL){
-                            temp_pospos=pos->next;
-                        }
-                        Node*head_temp=head;
-                        for(;head_temp!=NULL;head_temp=head_temp->next){
-                            if(head_temp->next==base){
-                                break;
-                            }
-                        }
-                        for(;temp_posprev!=NULL;temp_posprev=temp_posprev->next){
-                            if(temp_posprev->next==pos){
-                                break;
-                            }
-                        }
-                         if (temp_posprev == Circle){
-                            Node* temp_head = head;
-                            while (temp_head->next!=Circle)
-                                temp_head=temp_head->next;
-                            Circle->next = Circle->next->next;
-                            temp_head->next=pos;
-                            pos->next = Circle;
-                            Circle = pos;
-                            continue;
-                        }
-            
-                        temp_posprev->next=temp;
-                        temp->next=temp_pospos;
-                        Circle=pos;
-                        Circle->next=temp2;
-                    }
+                    temp_posprev->next=temp;
+                    temp->next=temp_pospos;
+                    Circle=pos;
+                    Circle->next=temp2;
+                    head = Circle;
                 }
+                else{
+                    Node* temp=Circle;
+                    Node* temp2=Circle->next;
+                    Node* temp_posprev=Circle;
+                    Node* temp_pospos=NULL;
+                    if(pos->next!=NULL){
+                        temp_pospos=pos->next;
+                    }
+                    Node*head_temp=head;
+                    for(;head_temp!=NULL;head_temp=head_temp->next){
+                        if(head_temp->next==base){
+                            break;
+                        }
+                    }
+                    for(;temp_posprev!=NULL;temp_posprev=temp_posprev->next){
+                        if(temp_posprev->next==pos){
+                            break;
+                        }
+                    }
+                    if (temp_posprev == Circle){
+                        Node* temp_head = head;
+                        while (temp_head->next!=Circle)
+                            temp_head=temp_head->next;
+                        Circle->next = Circle->next->next;
+                        temp_head->next=pos;
+                        pos->next = Circle;
+                        Circle = pos;
+                        continue;
+                    }
+            
+                    temp_posprev->next=temp;
+                    temp->next=temp_pospos;
+                    Circle=pos;
+                    Circle->next=temp2;
+                        
+
+                }
+                
 
             }
             int o = 0;
@@ -169,6 +171,7 @@ class List
             }
             Circle = Circle->next;
             actual++;
+            Node* Juanito = head;
 
             
         } 
@@ -178,12 +181,12 @@ class List
 int main() {
   List l;
   l.add(7);
-  l.add(61);
+  l.add(6);
+  l.add(5);
+  l.add(700);
+  l.add(3);
+  l.add(2);
   l.add(1);
-  l.add(2);
-  l.add(4);
-  l.add(450);
-  l.add(2);
   l.print();
   cout<<"\n"<<"Aqui comienza el cicle sort"<<"\n";
   l.Cycle_Sort();
