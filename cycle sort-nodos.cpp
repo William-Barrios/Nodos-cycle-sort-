@@ -76,6 +76,8 @@ class List
                 }
                 if (cont == 0){
                     run = false;
+                    if (actual==0)
+                        head = Circle;
                     continue;
                 }
 
@@ -156,8 +158,18 @@ class List
                 }
 
             }
+            int o = 0;
+            Node* temp_head = head;
+            if (actual != 0){
+                while (o < actual-1){
+                    temp_head=temp_head->next;
+                    o++;
+                }
+                temp_head->next= Circle;
+            }
             Circle = Circle->next;
             actual++;
+
             
         } 
     }
@@ -167,12 +179,11 @@ int main() {
   List l;
   l.add(7);
   l.add(61);
-  l.add(7);
-  l.add(4);
-  l.add(22);
-  l.add(21);
   l.add(1);
-  
+  l.add(2);
+  l.add(4);
+  l.add(450);
+  l.add(2);
   l.print();
   cout<<"\n"<<"Aqui comienza el cicle sort"<<"\n";
   l.Cycle_Sort();
